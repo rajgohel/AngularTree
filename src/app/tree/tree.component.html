@@ -1,0 +1,8 @@
+<ul *ngIf="treeData">
+    <li *ngFor="let node of treeData">
+        <span *ngIf="!node.showChildren" (click)="toggleChild(node)"><i class="fa fa-plus-square-o iconClass"></i> <i class="fa fa-folder"></i></span>
+        <span *ngIf="node.showChildren" (click)="toggleChild(node)"><i class="fa fa-minus-square-o iconClass"></i><i class="fa fa-folder-open"></i></span>
+        <span (click)="toggleChild(node)"> {{ node.name }} </span>
+        <app-tree *ngIf="node.showChildren" [treeData]="node.children"></app-tree>
+    </li>
+</ul>
